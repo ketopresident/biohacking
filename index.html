@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Biohacking Summit Poland 2026 — Longevity & Keto</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #1a2e1e;
+    --moss: #2d4a2f;
+    --sage: #5a7a4a;
+    --fern: #7a9a62;
+    --mint: #a8c490;
+    --cream: #f5f0e8;
+    --warm-white: #faf7f2;
+    --earth: #8b6b4a;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --charcoal: #2a2a2a;
+    --text: #1e1e1e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(26,46,30,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(168,196,144,0.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--mint);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(245,240,232,0.75); font-size: 0.82rem; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; font-weight: 400;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.55rem 1.6rem;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500;
+    transition: all 0.3s; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--forest); }
+
+  /* ─── HERO ─────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: var(--forest);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(90,122,74,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(45,74,47,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(139,107,74,0.15) 0%, transparent 50%);
+  }
+
+  /* Organic leaf shapes */
+  .leaf-decor {
+    position: absolute; pointer-events: none;
+    opacity: 0.08;
+  }
+  .leaf-1 {
+    top: 10%; left: 5%; width: 280px; height: 280px;
+    background: radial-gradient(circle, var(--mint), transparent 70%);
+    border-radius: 50% 20% 60% 30%;
+    transform: rotate(-30deg);
+    animation: floatLeaf 8s ease-in-out infinite;
+  }
+  .leaf-2 {
+    top: 60%; right: 3%; width: 350px; height: 200px;
+    background: radial-gradient(circle, var(--sage), transparent 70%);
+    border-radius: 60% 30% 40% 70%;
+    transform: rotate(20deg);
+    animation: floatLeaf 10s ease-in-out infinite reverse;
+    opacity: 0.06;
+  }
+  .leaf-3 {
+    bottom: 5%; left: 15%; width: 200px; height: 300px;
+    background: radial-gradient(circle, var(--fern), transparent 70%);
+    border-radius: 30% 70% 50% 40%;
+    animation: floatLeaf 12s ease-in-out infinite 2s;
+    opacity: 0.07;
+  }
+
+  @keyframes floatLeaf {
+    0%, 100% { transform: rotate(-30deg) translateY(0px); }
+    50% { transform: rotate(-30deg) translateY(-20px); }
+  }
+
+  /* Particle dots */
+  .particles {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .particle {
+    position: absolute; width: 2px; height: 2px;
+    background: var(--mint); border-radius: 50%;
+    animation: drift linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes drift {
+    0% { opacity: 0; transform: translateY(100vh) translateX(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) translateX(30px); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '—'; margin: 0 0.8rem; opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 8vw, 7rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--cream);
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--mint);
+    display: block;
+  }
+
+  .hero-subtitle-pl {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-style: italic; font-weight: 300;
+    color: rgba(168,196,144,0.7);
+    margin-top: 0.5rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+
+  .hero-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+    color: rgba(245,240,232,0.65);
+    max-width: 540px; margin: 0 auto 2.5rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+
+  .hero-date {
+    display: flex; align-items: center; gap: 1.5rem;
+    justify-content: center; margin-bottom: 3rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .hero-date-item {
+    text-align: center;
+  }
+  .hero-date-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .hero-date-label {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(168,196,144,0.6); margin-top: 0.3rem;
+  }
+  .hero-date-sep {
+    width: 1px; height: 40px; background: rgba(201,168,76,0.3);
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1rem; justify-content: center;
+    position: relative; z-index: 2;
+    animation: fadeUp 1s ease 0.9s both;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--forest);
+    padding: 1rem 2.8rem; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; border: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light); transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(201,168,76,0.3);
+  }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    padding: 1rem 2.8rem; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 400; cursor: pointer;
+    border: 1px solid rgba(245,240,232,0.35);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--mint); color: var(--mint);
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    z-index: 2; animation: fadeUp 1s ease 1.2s both;
+  }
+  .hero-scroll span {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(168,196,144,0.5);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── ABOUT STRIP ─────────────────────── */
+  .about-strip {
+    background: var(--cream);
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-label {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1rem;
+  }
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2; color: var(--forest); margin-bottom: 1.5rem;
+  }
+  .about-heading em { font-style: italic; color: var(--earth); }
+  .about-body {
+    font-size: 1rem; line-height: 1.8; color: #555; font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .about-body-pl {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic; color: var(--sage);
+    line-height: 1.7;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .stat-item { text-align: center; padding: 2rem 1.5rem; background: var(--warm-white); border-left: 3px solid var(--fern); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 700; color: var(--forest);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage); margin-top: 0.5rem;
+  }
+
+  /* ─── PILLARS ─────────────────────────── */
+  .pillars {
+    background: var(--forest);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .pillars::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(90,122,74,0.2) 0%, transparent 70%);
+  }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; position: relative; z-index: 1;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--cream); margin-bottom: 0.5rem;
+    position: relative; z-index: 1;
+  }
+  .section-title-pl {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.2rem;
+    color: rgba(168,196,144,0.6); margin-bottom: 3.5rem;
+    position: relative; z-index: 1;
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px; max-width: 1100px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .pillar-card {
+    background: rgba(42,74,42,0.4);
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(168,196,144,0.1);
+    transition: all 0.4s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform 0.4s;
+  }
+  .pillar-card:hover { background: rgba(58,90,58,0.5); transform: translateY(-4px); }
+  .pillar-card:hover::before { transform: scaleX(1); }
+  .pillar-icon {
+    font-size: 2.5rem; margin-bottom: 1.5rem; display: block;
+  }
+  .pillar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--mint); margin-bottom: 0.4rem;
+  }
+  .pillar-name-pl {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.95rem;
+    color: rgba(168,196,144,0.5); margin-bottom: 1rem;
+  }
+  .pillar-desc { font-size: 0.9rem; color: rgba(245,240,232,0.6); line-height: 1.7; font-weight: 300; }
+
+  /* ─── SPEAKERS ─────────────────────────── */
+  .speakers {
+    background: var(--warm-white);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+  .speakers .section-title { color: var(--forest); }
+  .speakers .section-title-pl { color: var(--sage); }
+  .speakers-note {
+    font-size: 0.9rem; color: var(--sage); font-style: italic;
+    margin-bottom: 3rem;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  }
+  .speakers-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; max-width: 1100px; margin: 0 auto;
+  }
+  .speaker-card {
+    padding: 2rem; background: var(--cream);
+    border-bottom: 2px solid var(--fern);
+    transition: all 0.3s;
+  }
+  .speaker-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,46,30,0.1); }
+  .speaker-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--moss), var(--sage));
+    margin: 0 auto 1rem; display: flex; align-items: center;
+    justify-content: center; font-size: 2rem;
+    border: 2px solid var(--fern);
+  }
+  .speaker-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); }
+  .speaker-title { font-size: 0.78rem; color: var(--sage); margin-top: 0.3rem; letter-spacing: 0.05em; }
+  .speaker-tba {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.95rem; color: rgba(90,122,74,0.6); margin-top: 0.5rem;
+  }
+
+  /* ─── AGENDA ─────────────────────────── */
+  .agenda {
+    background: var(--cream);
+    padding: 6rem 2rem;
+  }
+  .agenda-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .agenda .section-title { color: var(--forest); }
+  .agenda .section-title-pl { color: var(--sage); }
+  .agenda-timeline {
+    margin-top: 3rem; text-align: left;
+    border-left: 2px solid var(--fern);
+    padding-left: 2rem;
+  }
+  .agenda-item {
+    position: relative; margin-bottom: 2.5rem;
+  }
+  .agenda-item::before {
+    content: '';
+    position: absolute; left: -2.6rem; top: 0.3rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--fern);
+  }
+  .agenda-time {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 0.3rem;
+  }
+  .agenda-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; color: var(--forest); margin-bottom: 0.2rem;
+  }
+  .agenda-desc { font-size: 0.88rem; color: #777; font-weight: 300; }
+
+  /* ─── REGISTER ─────────────────────────── */
+  .register {
+    background: var(--moss);
+    padding: 7rem 2rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .register::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 50%, rgba(26,46,30,0.4) 0%, transparent 60%);
+  }
+  .register .section-title { color: var(--cream); position: relative; z-index: 1; }
+  .register .section-title-pl { color: rgba(168,196,144,0.6); position: relative; z-index: 1; }
+  .register-desc {
+    font-size: 1rem; color: rgba(245,240,232,0.7); font-weight: 300;
+    max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .register-form {
+    display: flex; gap: 0; max-width: 480px; margin: 0 auto 1rem;
+    position: relative; z-index: 1;
+    flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+  }
+  .register-form input {
+    flex: 1; min-width: 240px;
+    padding: 1rem 1.5rem; border: 1px solid rgba(168,196,144,0.3);
+    background: rgba(26,46,30,0.6); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    outline: none; min-width: 260px;
+  }
+  .register-form input::placeholder { color: rgba(168,196,144,0.4); }
+  .register-form input:focus { border-color: var(--gold); }
+  .register-note {
+    font-size: 0.75rem; color: rgba(168,196,144,0.5);
+    letter-spacing: 0.05em; position: relative; z-index: 1;
+  }
+
+  /* ─── FOOTER ─────────────────────────── */
+  footer {
+    background: var(--forest);
+    padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+    border-top: 1px solid rgba(168,196,144,0.1);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--mint); font-weight: 600;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8rem; color: rgba(245,240,232,0.45); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--mint); }
+  .footer-copy { font-size: 0.75rem; color: rgba(245,240,232,0.3); }
+
+  /* ─── RESPONSIVE ─────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-strip { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 2rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; padding: 2rem; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .speakers-grid { grid-template-columns: 1fr 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Biohacking<span> Summit</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#pillars">Topics</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+  </ul>
+  <a href="#register" class="nav-cta">Register Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="leaf-decor leaf-1"></div>
+  <div class="leaf-decor leaf-2"></div>
+  <div class="leaf-decor leaf-3"></div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <p class="hero-eyebrow">Poland's First Biohacking Summit</p>
+
+  <h1 class="hero-title">
+    Biohacking<br>
+    <em>Summit 2026</em>
+  </h1>
+  <p class="hero-subtitle-pl">Szczyt Biohackingu w Polsce</p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-desc">
+    Biohacking · Longevity · Keto &amp; Metabolic Health<br>
+    Join the pioneers redefining human performance.
+  </p>
+
+  <div class="hero-date">
+    <div class="hero-date-item">
+      <span class="hero-date-num">SEP</span>
+      <span class="hero-date-label">Month / Miesiąc</span>
+    </div>
+    <div class="hero-date-sep"></div>
+    <div class="hero-date-item">
+      <span class="hero-date-num">2026</span>
+      <span class="hero-date-label">Warsaw, Poland</span>
+    </div>
+    <div class="hero-date-sep"></div>
+    <div class="hero-date-item">
+      <span class="hero-date-num">1st</span>
+      <span class="hero-date-label">Edition / Edycja</span>
+    </div>
+  </div>
+
+  <div class="hero-buttons">
+    <a href="#register" class="btn-primary">Secure Your Spot</a>
+    <a href="#about" class="btn-outline">Discover More</a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--cream);">
+  <div class="about-strip">
+    <div>
+      <p class="about-label">About the Summit</p>
+      <h2 class="about-heading">
+        Optimize your biology.<br>
+        <em>Extend your vitality.</em>
+      </h2>
+      <p class="about-body">
+        BioHack Poland 2026 is the first dedicated biohacking summit in Poland — bringing together leading scientists, practitioners, and optimizers to explore the frontiers of longevity, metabolic health, and human performance.
+      </p>
+      <p class="about-body-pl">
+        Pierwszy w Polsce szczyt poświęcony biohackingowi, długowieczności i metabolizmowi. Poznaj najnowsze strategie optymalizacji zdrowia i wydajności.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Expert Speakers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Full Days</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Attendees</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Core Topics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" class="pillars">
+  <p class="section-label">Core Topics / Tematy Główne</p>
+  <h2 class="section-title">Three Pillars of Optimization</h2>
+  <p class="section-title-pl">Trzy filary optymalizacji</p>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <span class="pillar-icon">🧬</span>
+      <h3 class="pillar-name">Biohacking</h3>
+      <p class="pillar-name-pl">Biohacking</p>
+      <p class="pillar-desc">Cold therapy, light optimization, sleep engineering, HRV, nootropics, wearables, and cutting-edge self-experimentation protocols.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">⏳</span>
+      <h3 class="pillar-name">Longevity</h3>
+      <p class="pillar-name-pl">Długowieczność</p>
+      <p class="pillar-desc">Epigenetic reprogramming, senolytic therapies, NAD+ pathways, telomere science, and the latest aging research from top labs.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">🥑</span>
+      <h3 class="pillar-name">Keto & Metabolic Health</h3>
+      <p class="pillar-name-pl">Keto i Zdrowie Metaboliczne</p>
+      <p class="pillar-desc">Ketogenic protocols, continuous glucose monitoring, fasting strategies, mitochondrial health, and metabolic flexibility.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section id="speakers" class="speakers">
+  <p class="section-label">Speakers / Prelegenci</p>
+  <h2 class="section-title">World-Class Experts</h2>
+  <p class="section-title-pl">Eksperci najwyższej klasy</p>
+  <p class="speakers-note">Speaker lineup to be announced — applications now open for proposals</p>
+  <div class="speakers-grid">
+    <div class="speaker-card">
+      <div class="speaker-avatar">🔬</div>
+      <p class="speaker-name">Dr. TBA</p>
+      <p class="speaker-title">Longevity Researcher</p>
+      <p class="speaker-tba">Coming soon</p>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">🧠</div>
+      <p class="speaker-name">Dr. TBA</p>
+      <p class="speaker-title">Cognitive Performance</p>
+      <p class="speaker-tba">Coming soon</p>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">⚡</div>
+      <p class="speaker-name">Expert TBA</p>
+      <p class="speaker-title">Metabolic Health</p>
+      <p class="speaker-tba">Coming soon</p>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">🌿</div>
+      <p class="speaker-name">Expert TBA</p>
+      <p class="speaker-title">Keto & Nutrition</p>
+      <p class="speaker-tba">Coming soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda" class="agenda">
+  <div class="agenda-inner">
+    <p class="section-label">Sample Schedule / Przykładowy Program</p>
+    <h2 class="section-title">Two Days of Transformation</h2>
+    <p class="section-title-pl">Dwa dni transformacji</p>
+    <div class="agenda-timeline">
+      <div class="agenda-item">
+        <p class="agenda-time">Day 1 Morning</p>
+        <p class="agenda-title">Opening Keynote: The Future of Human Longevity</p>
+        <p class="agenda-desc">Przyszłość ludzkiej długowieczności</p>
+      </div>
+      <div class="agenda-item">
+        <p class="agenda-time">Day 1 Afternoon</p>
+        <p class="agenda-title">Deep Dive: Ketogenic Protocols & Metabolic Flexibility</p>
+        <p class="agenda-desc">Protokoły ketogeniczne i elastyczność metaboliczna</p>
+      </div>
+      <div class="agenda-item">
+        <p class="agenda-time">Day 1 Evening</p>
+        <p class="agenda-title">Networking Dinner & Biohacker Showcase</p>
+        <p class="agenda-desc">Kolacja networkingowa i prezentacje biohackerów</p>
+      </div>
+      <div class="agenda-item">
+        <p class="agenda-time">Day 2 Morning</p>
+        <p class="agenda-title">Workshop: Practical Biohacking Protocols</p>
+        <p class="agenda-desc">Warsztaty: praktyczne protokoły biohackingu</p>
+      </div>
+      <div class="agenda-item">
+        <p class="agenda-time">Day 2 Afternoon</p>
+        <p class="agenda-title">Closing Panel: Building Your Longevity Stack</p>
+        <p class="agenda-desc">Panel zamykający: budowanie swojego stosu długowieczności</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register" class="register">
+  <p class="section-label">Early Access / Wczesny Dostęp</p>
+  <h2 class="section-title">Join the Waitlist</h2>
+  <p class="section-title-pl">Dołącz do listy oczekujących</p>
+  <p class="register-desc">
+    Be among the first to know when tickets go live — exclusive early bird pricing for subscribers.
+    <br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:rgba(168,196,144,0.6);">Zapisz się, aby otrzymać ekskluzywne ceny wczesnych ptaków.</em>
+  </p>
+  <div class="register-form">
+    <input type="email" placeholder="Your email / Twój email" />
+    <button class="btn-primary" type="button">Notify Me</button>
+  </div>
+  <p class="register-note">No spam. Unsubscribe anytime. / Żadnego spamu. Wypisz się w dowolnym momencie.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Biohacking<span> Summit</span> Poland 2026</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#pillars">Topics</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#register">Register</a>
+    <a href="#">Contact</a>
+    <a href="#">Sponsorship</a>
+  </div>
+  <p class="footer-copy">© 2026 Biohacking Summit Poland. All rights reserved.</p>
+</footer>
+
+<script>
+  // Generate floating particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (12 + Math.random() * 20) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+    container.appendChild(p);
+  }
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pillar-card, .speaker-card, .stat-item, .agenda-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
